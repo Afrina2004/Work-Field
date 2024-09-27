@@ -1,1 +1,1 @@
-https://relaxed-kleicha-06b532.netlify.app
+Hosting URL: https://simple-firebase-ba28e.web.app
