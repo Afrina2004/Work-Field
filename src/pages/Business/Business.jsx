@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 
 
 const Business = ({business}) => {
-      const {id,businessImg,businessName,yearOfOperation,numberOfProducts,likes} = business;
-    
+      const {_id,id,businessImg,businessName,yearOfOperation,numberOfProducts,likes} = business;
+     
+     
+
+
     return (
         <div>
              <div className='p-4 '>

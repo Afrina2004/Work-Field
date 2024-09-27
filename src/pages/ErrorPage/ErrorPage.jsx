@@ -1,11 +1,18 @@
 import { Link, useRouteError } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const ErrorPage = () => {
    const error = useRouteError();
   
 
     return (
+        <div>
+            <Helmet>
+                <title>BD Handicrafts | Error Page</title>
+            </Helmet>
+       
         <div className='text-center'>
+
             <h2>Error!!!!!</h2>
             <p>{error.statusText || error.message }</p>
          {
@@ -16,7 +23,7 @@ const ErrorPage = () => {
          }
         
         
-        </div>
+        </div> </div>
     );
 };
 

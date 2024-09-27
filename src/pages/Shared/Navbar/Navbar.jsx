@@ -2,15 +2,19 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
 import LOGO from '../../../assets/LOGO.png';
-import userDefaultPic from '../../../assets/user.png';
+import { FaShoppingCart } from 'react-icons/fa';
+import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [cart] = useCart();
+    
+   
 
     const handleSignOut = () => {
         logOut()
         .then(() => {
-            console.log("Signed out successfully");
+            console.log("Sign out successfully");
         })
         .catch(error => {
             console.error("Error signing out: ", error);
@@ -21,6 +25,14 @@ const Navbar = () => {
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/blog">Blog</NavLink></li>
        
+        <li>
+            <Link to="/dashboard/cart">
+                <button className="">
+                    <FaShoppingCart className="mr-2"></FaShoppingCart>
+                    <div className="badge badge-secondary">+{cart.length}</div>
+                </button>
+            </Link>
+        </li>
     </>
 
     return (
@@ -40,27 +52,31 @@ const Navbar = () => {
                     </div>
                 <a className="btn btn-ghost text-4xl text-yellow-100  mt-3 font-extrabold">Bd Handicrafts</a></span>
             </div>
+           
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {navLinks}
                 </ul>
             </div>
             <div className="navbar-end">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img src={userDefaultPic} />
+            {user ? (
+                    <div className="flex items-center">
+                        <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+                            <div className="avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src={user.photoURL} alt="User profile" className='bg-white' />
+                                </div>
+                            </div>
+                        </div>
+                        <button onClick={handleSignOut} className="btn btn-warning ml-4">Sign Out</button>
                     </div>
-                </label>
-                {
-                    user ?
-                        <button onClick={handleSignOut} className="btn btn-outline btn-warning">Sign Out</button>
-                        :
-                        <Link to="/login">
-                            <button className="btn btn-outline btn-warning">Login</button>
-                        </Link>
-                }
+                ) : (
+                    <Link to="/login">
+                        <button className="btn btn-warning">Login</button>
+                    </Link>
+                )}
 
-            </div>
+            </div>  
         </div>
     );
 };

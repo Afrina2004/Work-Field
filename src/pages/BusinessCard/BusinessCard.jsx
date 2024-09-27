@@ -5,14 +5,15 @@ import Business from '../Business/Business';
 
 
 const BusinessCard = () => {
-    const [business,setBusiness] = useState([]);
-      const [dataLength,setDataLength] = useState(3);
+  const [business, setBusiness] = useState([]);
+  const [dataLength,setDataLength] = useState(3);
 
-      useEffect( () =>{
-        fetch('data(1).json')
-        .then(res => res.json())
-        .then(data => setBusiness(data));
-    },[])
+  useEffect(() => {
+      fetch(`https://work-field-server.vercel.app/business`)
+
+          .then(res => res.json())
+          .then(data => setBusiness(data));
+  }, [])
 
     return (
         <div>
@@ -22,7 +23,7 @@ const BusinessCard = () => {
         <p className='text-center p-2 text-xl'></p>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {
-                business.slice(0, dataLength).map(business => <Business key={business.id} business={business}></Business>)
+                business.slice(0, dataLength).map(business => <Business key={business._id} business={business}></Business>)
             }
           </div>
           <div className='items-center text-center'>
