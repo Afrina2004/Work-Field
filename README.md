@@ -63,7 +63,7 @@ src/
 ```bash
 
 # 1. Clone the repository
-git clone https://github.com/your-username/fild-work.git
+https://github.com/Afrina2004/Work-Field.git
 cd fild-work
 
 # 2. Install dependencies
