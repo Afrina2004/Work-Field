@@ -60,18 +60,15 @@ src/
 
 ## Setup Instructions
 
-```bash
+# 1. Clone the repository :
 
-# 1. Clone the repository
 https://github.com/Afrina2004/Work-Field.git
 cd fild-work
 
+# 2. Install dependencies :
 
----
-
-```bash
-# 2. Install dependencies
 npm install
 
-# 3. Start development server
+# 3. Start development server :
+
 npm run dev
