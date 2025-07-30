@@ -66,6 +66,10 @@ src/
 https://github.com/Afrina2004/Work-Field.git
 cd fild-work
 
+
+---
+
+```bash
 # 2. Install dependencies
 npm install
 
